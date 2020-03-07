@@ -1,4 +1,4 @@
-package model;
+package com.xdinuka.recipeshare.ingredientservice.model;
 
 import lombok.Data;
 
@@ -15,5 +15,6 @@ public class Ingredient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
     String name;
+    Boolean isVegan;
 
 }
