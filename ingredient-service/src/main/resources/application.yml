@@ -9,5 +9,3 @@ spring:
 #      naming:
 #        physical-strategy: org.hibernate.boot.com.xdinuka.recipeshare.ingredientservice.model.naming.PhysicalNamingStrategyStandardImpl
       ddl-auto: update
-server:
-  port: 5001
