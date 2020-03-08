@@ -1,11 +1,18 @@
 package com.xdinuka.recipeio.recipeservice.controller;
 
+import com.xdinuka.recipeio.recipeservice.hystrix.IngredientCommand;
+import com.xdinuka.recipeio.recipeservice.model.Ingredient;
 import com.xdinuka.recipeio.recipeservice.model.Recipe;
 import com.xdinuka.recipeio.recipeservice.service.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,10 +22,12 @@ public class RecipeController {
 
 
     final RecipeService recipeService;
+    final RestTemplate restTemplate;
 
     @Autowired
-    public RecipeController(RecipeService recipeService) {
+    public RecipeController(RecipeService recipeService, RestTemplate restTemplate) {
         this.recipeService = recipeService;
+        this.restTemplate = restTemplate;
     }
 
 
@@ -34,8 +43,24 @@ public class RecipeController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Recipe> fetch(@PathVariable Integer id) {
-        Optional<Recipe> recipe = recipeService.fetchById(id);
-        return ResponseEntity.of(recipe);
+        Optional<Recipe> optionalRecipe = recipeService.fetchById(id);
+        if(optionalRecipe.isPresent()){
+            ArrayList<Ingredient> ingredients = new ArrayList<>();
+            Recipe recipe = optionalRecipe.get();
+            Boolean[] isVegan = {true};
+            recipe.getIngredients().stream().forEach(i->{
+                HttpHeaders httpHeaders = new HttpHeaders();
+                Ingredient ingredient = new IngredientCommand(i.getId(), httpHeaders, restTemplate).execute();
+                isVegan[0] = isVegan[0] & ingredient.getIsVegan();
+                ingredients.add(ingredient);
+            });
+            recipe.setIngredients(ingredients);
+            recipe.setIsVegan(isVegan[0]);
+            optionalRecipe = Optional.of(recipe);
+        }
+
+
+        return ResponseEntity.of(optionalRecipe);
     }
 
 }

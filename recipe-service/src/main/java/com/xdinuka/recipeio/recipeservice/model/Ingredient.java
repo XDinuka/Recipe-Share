@@ -15,5 +15,7 @@ public class Ingredient {
     List<Recipe> recipes;
     @Transient
     String name;
+    @Transient
+    Boolean isVegan;
 
 }

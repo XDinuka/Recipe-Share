@@ -19,6 +19,7 @@ public class Recipe {
             inverseJoinColumns = {@JoinColumn(name = "ingredient_id",referencedColumnName = "id")},
             joinColumns  = {@JoinColumn(name = "recipe_id",referencedColumnName = "id")}
     )
+            // TODO convert to one to many
     List<Ingredient> ingredients;
     @Transient
     Boolean isVegan;
