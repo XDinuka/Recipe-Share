@@ -1,7 +1,7 @@
-package com.xdinuka.recipeshare.recipeservice.service;
+package com.xdinuka.recipeio.recipeservice.service;
 
-import com.xdinuka.recipeshare.recipeservice.model.Recipe;
-import com.xdinuka.recipeshare.recipeservice.repository.RecipeRepository;
+import com.xdinuka.recipeio.recipeservice.repository.RecipeRepository;
+import com.xdinuka.recipeio.recipeservice.model.Recipe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
-package com.xdinuka.recipeshare.recipeservice.service;
+package com.xdinuka.recipeio.recipeservice.service;
 
-import com.xdinuka.recipeshare.recipeservice.model.Recipe;
+import com.xdinuka.recipeio.recipeservice.model.Recipe;
 
 import java.util.List;
 import java.util.Optional;

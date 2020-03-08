@@ -1,6 +1,6 @@
-package com.xdinuka.recipeshare.ingredientservice.repository;
+package com.xdinuka.recipeio.ingredientservice.repository;
 
-import com.xdinuka.recipeshare.ingredientservice.model.Ingredient;
+import com.xdinuka.recipeio.ingredientservice.model.Ingredient;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

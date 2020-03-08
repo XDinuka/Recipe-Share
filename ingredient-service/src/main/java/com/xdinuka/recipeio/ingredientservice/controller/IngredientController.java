@@ -1,12 +1,11 @@
-package com.xdinuka.recipeshare.ingredientservice.controller;
+package com.xdinuka.recipeio.ingredientservice.controller;
 
-import com.xdinuka.recipeshare.ingredientservice.model.Ingredient;
-import com.xdinuka.recipeshare.ingredientservice.service.IngredientService;
+import com.xdinuka.recipeio.ingredientservice.model.Ingredient;
+import com.xdinuka.recipeio.ingredientservice.service.IngredientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 

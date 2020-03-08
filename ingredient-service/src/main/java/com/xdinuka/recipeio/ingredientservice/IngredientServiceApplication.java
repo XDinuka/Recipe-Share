@@ -1,4 +1,4 @@
-package com.xdinuka.recipeshare.ingredientservice;
+package com.xdinuka.recipeio.ingredientservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

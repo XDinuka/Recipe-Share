@@ -1,4 +1,4 @@
-package com.xdinuka.recipeshare.ingredientservice.model;
+package com.xdinuka.recipeio.ingredientservice.model;
 
 import lombok.Data;
 

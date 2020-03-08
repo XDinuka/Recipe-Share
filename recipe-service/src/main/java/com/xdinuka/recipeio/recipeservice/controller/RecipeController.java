@@ -1,7 +1,7 @@
-package com.xdinuka.recipeshare.recipeservice.controller;
+package com.xdinuka.recipeio.recipeservice.controller;
 
-import com.xdinuka.recipeshare.recipeservice.model.Recipe;
-import com.xdinuka.recipeshare.recipeservice.service.RecipeService;
+import com.xdinuka.recipeio.recipeservice.model.Recipe;
+import com.xdinuka.recipeio.recipeservice.service.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
