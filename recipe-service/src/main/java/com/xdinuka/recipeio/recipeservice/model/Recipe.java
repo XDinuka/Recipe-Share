@@ -14,12 +14,7 @@ public class Recipe {
     Integer id;
     @Column(nullable = false)
     String name;
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable( name = "recipe_ingredients",
-            inverseJoinColumns = {@JoinColumn(name = "ingredient_id",referencedColumnName = "id")},
-            joinColumns  = {@JoinColumn(name = "recipe_id",referencedColumnName = "id")}
-    )
-            // TODO convert to one to many
+    @OneToMany(mappedBy = "recipe")
     List<Ingredient> ingredients;
     @Transient
     Boolean isVegan;

@@ -3,16 +3,18 @@ package com.xdinuka.recipeio.recipeservice.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @Entity
 public class Ingredient {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
-    @ManyToMany(mappedBy = "ingredients")
-    List<Recipe> recipes;
+    @Column(nullable = false)
+    Integer ingredientId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    Recipe recipe;
     @Transient
     String name;
     @Transient
