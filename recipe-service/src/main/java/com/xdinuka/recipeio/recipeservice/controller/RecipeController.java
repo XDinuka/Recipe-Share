@@ -63,4 +63,9 @@ public class RecipeController {
         return ResponseEntity.of(optionalRecipe);
     }
 
+    @GetMapping("/with/{ingredientID}")
+    public List<Recipe> fetchAllWithIngredients(@PathVariable Integer ingredientID){
+        return recipeService.fetchAllWithIngredient(ingredientID);
+    }
+
 }

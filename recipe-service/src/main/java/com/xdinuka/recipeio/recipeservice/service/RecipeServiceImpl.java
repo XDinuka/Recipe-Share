@@ -33,4 +33,9 @@ public class RecipeServiceImpl implements RecipeService{
         return recipeRepository.findById(id);
     }
 
+    @Override
+    public List<Recipe> fetchAllWithIngredient(Integer ingredientID) {
+        return recipeRepository.fetchRecipeIngredientInnerJoin(ingredientID);
+    }
+
 }
