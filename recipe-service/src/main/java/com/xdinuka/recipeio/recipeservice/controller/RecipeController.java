@@ -50,7 +50,7 @@ public class RecipeController {
             Boolean[] isVegan = {true};
             recipe.getIngredients().stream().forEach(i->{
                 HttpHeaders httpHeaders = new HttpHeaders();
-                Ingredient ingredient = new IngredientCommand(i.getId(), httpHeaders, restTemplate).execute();
+                Ingredient ingredient = new IngredientCommand(i.getIngredientId(), httpHeaders, restTemplate).execute();
                 isVegan[0] = isVegan[0] & ingredient.getIsVegan();
                 ingredients.add(ingredient);
             });

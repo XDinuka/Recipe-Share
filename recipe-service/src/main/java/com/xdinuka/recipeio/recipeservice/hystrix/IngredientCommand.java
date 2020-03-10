@@ -30,6 +30,12 @@ public class IngredientCommand extends HystrixCommand<Ingredient> {
         responseEntity = restTemplate.exchange("http://ingredients/ingredients/" + ingredientID, HttpMethod.GET, httpEntity, Ingredient.class);
         return responseEntity.getBody();
 
+    }
 
+    @Override
+    protected Ingredient getFallback() {
+        Ingredient ingredient = new Ingredient();
+        ingredient.setIngredientId(ingredientID);
+        return ingredient;
     }
 }
