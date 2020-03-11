@@ -10,5 +10,6 @@ public interface RecipeService {
     List<Recipe> fetchAll();
     Recipe saveOrUpdate(Recipe recipe);
     Optional<Recipe> fetchById(Integer id);
-    List<Recipe> fetchAllWithIngredient(Integer ingredientID);
+
+    List<Recipe> fetchAllWithIngredient(Integer... ingredientIDs);
 }

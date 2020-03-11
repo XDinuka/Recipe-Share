@@ -1,5 +1,6 @@
 package com.xdinuka.recipeio.recipeservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -14,6 +15,7 @@ public class Ingredient implements Serializable {
     Integer ingredientId;
     @Id
     @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
     Recipe recipe;
     @Transient
     String name;

@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class Recipe implements Serializable {
     Integer id;
     @Column(nullable = false)
     String name;
-    @OneToMany(mappedBy = "recipe")
+    @OneToMany(mappedBy = "recipe",cascade = CascadeType.ALL)
     List<Ingredient> ingredients;
     @Transient
     Boolean isVegan;
@@ -27,7 +28,13 @@ public class Recipe implements Serializable {
         setName(name);
         setIsVegan(isVegan);
         setIngredients(Arrays.asList(ingredients));
-    }public Recipe(Integer id,String name,Boolean isVegan,List<Ingredient> ingredients){
+    }
+    public Recipe(Integer id,String name){
+        setId(id);
+        setName(name);
+    }
+
+    public Recipe(Integer id,String name,Boolean isVegan,List<Ingredient> ingredients){
         setId(id);
         setName(name);
         setIsVegan(isVegan);

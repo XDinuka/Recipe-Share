@@ -15,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/recipe")
@@ -33,11 +34,15 @@ public class RecipeController {
 
     @GetMapping
     List<Recipe> fetchAll() {
+        System.out.println("all");
         return recipeService.fetchAll();
     }
 
     @PostMapping
     Recipe insertOrUpdate(@RequestBody Recipe recipe) {
+        recipe.getIngredients().stream().forEach(i->{
+            i.setRecipe(recipe);
+        });
         return recipeService.saveOrUpdate(recipe);
     }
 
@@ -64,8 +69,15 @@ public class RecipeController {
     }
 
     @GetMapping("/with/{ingredientID}")
-    public List<Recipe> fetchAllWithIngredients(@PathVariable Integer ingredientID){
+    public List<Recipe> fetchWithIngredients(@PathVariable Integer ingredientID){
+//        System.out.println("hello1");
         return recipeService.fetchAllWithIngredient(ingredientID);
+    }
+
+    @PostMapping("/with")
+    public List<Recipe> fetchAllWithIngredients(@RequestBody List<Integer> ingredientID){
+//        System.out.println("hello1");
+        return recipeService.fetchAllWithIngredient(ingredientID.toArray(new Integer[ingredientID.size()]));
     }
 
 }

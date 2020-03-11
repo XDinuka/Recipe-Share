@@ -1,10 +1,12 @@
 package com.xdinuka.recipeio.recipeservice.service;
 
+import com.xdinuka.recipeio.recipeservice.model.Ingredient;
 import com.xdinuka.recipeio.recipeservice.repository.RecipeRepository;
 import com.xdinuka.recipeio.recipeservice.model.Recipe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,8 +36,13 @@ public class RecipeServiceImpl implements RecipeService{
     }
 
     @Override
-    public List<Recipe> fetchAllWithIngredient(Integer ingredientID) {
-        return recipeRepository.fetchRecipeIngredientInnerJoin(ingredientID);
+    public List<Recipe> fetchAllWithIngredient(Integer... ingredientIDs) {
+//        System.out.println("hello2 "+ingredientID);
+//        Ingredient ingredient = new Ingredient();
+//        ingredient.setIngredientId(ingredientID);
+        List<Recipe> recipes = recipeRepository.fetchRecipeIngredientInnerJoin(ingredientIDs);
+//        System.out.println(recipes.size());
+        return recipes;
     }
 
 }
