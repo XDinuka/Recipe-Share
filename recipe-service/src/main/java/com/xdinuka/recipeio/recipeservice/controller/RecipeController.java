@@ -76,8 +76,8 @@ public class RecipeController {
 
     @PostMapping("/with")
     public List<Recipe> fetchAllWithIngredients(@RequestBody List<Integer> ingredientID){
-//        System.out.println("hello1");
-        return recipeService.fetchAllWithIngredient(ingredientID.toArray(new Integer[ingredientID.size()]));
+        System.out.println("hello1");
+        return recipeService.fetchAllWithIngredients(ingredientID.toArray(new Integer[ingredientID.size()]));
     }
 
 }

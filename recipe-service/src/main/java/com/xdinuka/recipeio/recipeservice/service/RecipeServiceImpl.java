@@ -36,11 +36,18 @@ public class RecipeServiceImpl implements RecipeService{
     }
 
     @Override
-    public List<Recipe> fetchAllWithIngredient(Integer... ingredientIDs) {
+    public List<Recipe> fetchAllWithIngredient(Integer ingredientID) {
+        return recipeRepository.fetchRecipeIngredientInnerJoin(ingredientID);
+    }
+
+    @Override
+    public List<Recipe> fetchAllWithIngredients(Integer... ingredientID) {
 //        System.out.println("hello2 "+ingredientID);
 //        Ingredient ingredient = new Ingredient();
 //        ingredient.setIngredientId(ingredientID);
-        List<Recipe> recipes = recipeRepository.fetchRecipeIngredientInnerJoin(ingredientIDs);
+
+
+        List<Recipe> recipes = recipeRepository.fetchRecipeIngredientsInnerJoin(Arrays.asList(ingredientID),Long.valueOf(ingredientID.length));
 //        System.out.println(recipes.size());
         return recipes;
     }
