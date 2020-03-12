@@ -1,1 +1,72 @@
-<p>rio-navbar works!</p>
+<div fxHide.lt-lg="true">
+<mat-toolbar color="primary">
+  <span>RecipeIO</span>
+  <span class="example-spacer"></span>
+    <a mat-raised-button routerLink=".">Browse Recipes</a>
+    <span class="spacer-1em"></span>
+    <a mat-raised-button routerLink=".">My Ingredients</a>
+    <span class="spacer-1em"></span>
+    <a mat-raised-button routerLink=".">My Recipes</a>
+</mat-toolbar>
+</div>
+<div fxHide.gt-md="true">
+  <mat-toolbar color="primary">
+    <span>RecipeIO</span>
+    <span class="example-spacer"></span>
+
+    <mat-menu #appMenu="matMenu">
+      <button mat-menu-item>Settings</button>
+      <button mat-menu-item>Help</button>
+    </mat-menu>
+
+    <button mat-icon-button [matMenuTriggerFor]="appMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+  </mat-toolbar>
+
+<!--  <div *ngIf="!shouldRun">Please open on Stackblitz to see result</div>-->
+</div>
+
+
+
+
+
+<!--  <mat-toolbar-row>-->
+<!--    <span class="example-spacer"></span>-->
+
+<!--  </mat-toolbar-row>-->
+
+
+<!--  <div fxShow="true" fxHide.lt-md="true">-->
+
+<!-- The following menu items will be hidden on both SM and XS screen sizes -->
+
+<!--    <a href="#" mat-button>Menu Item 1</a>-->
+
+<!--    <a href="#" mat-button>Menu Item 2</a>-->
+
+<!--    <a href="#" mat-button>Menu Item 3</a>-->
+
+<!--    <a href="#" mat-button>Menu Item 4</a>-->
+
+<!--    <a href="#" mat-button>Menu Item 5</a>-->
+
+<!--    <a href="#" mat-button>Menu Item 6</a>-->
+
+<!--  </div>-->
+
+
+<!--    <mat-toolbar-row>-->
+<!--      <span class="example-spacer"></span>-->
+
+<!--&lt;!&ndash;      <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon>&ndash;&gt;-->
+<!--      <span class="example-spacer"></span>-->
+<!--    </mat-toolbar-row>-->
+
+<!--  <mat-toolbar-row>-->
+<!--    <span>Third Line</span>-->
+<!--    <span class="example-spacer"></span>-->
+<!--    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>-->
+<!--    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>-->
+<!--  </mat-toolbar-row>-->
