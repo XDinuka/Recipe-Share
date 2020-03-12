@@ -7,16 +7,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="zuul-service" />
+        <module name="user-service" />
         <module name="recipe-service" />
-        <module name="ingredient-service" />
         <module name="discovery-service" />
+        <module name="ingredient-service" />
+        <module name="zuul-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="discovery-service" target="1.8" />
       <module name="ingredient-service" target="1.8" />
       <module name="recipe-service" target="1.8" />
+      <module name="user-service" target="1.8" />
       <module name="zuul-service" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -25,6 +27,7 @@
       <module name="discovery-service" options="-parameters" />
       <module name="ingredient-service" options="-parameters" />
       <module name="recipe-service" options="-parameters" />
+      <module name="user-service" options="-parameters" />
       <module name="zuul-service" options="-parameters" />
     </option>
   </component>
