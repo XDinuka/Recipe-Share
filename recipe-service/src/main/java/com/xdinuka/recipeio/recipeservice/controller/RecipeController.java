@@ -34,7 +34,6 @@ public class RecipeController {
 
     @GetMapping
     List<Recipe> fetchAll() {
-        System.out.println("all");
         return recipeService.fetchAll();
     }
 
@@ -68,16 +67,14 @@ public class RecipeController {
         return ResponseEntity.of(optionalRecipe);
     }
 
-    @GetMapping("/with/{ingredientID}")
+    @GetMapping("/ingredient/{ingredientID}")
     public List<Recipe> fetchWithIngredients(@PathVariable Integer ingredientID){
-//        System.out.println("hello1");
         return recipeService.fetchAllWithIngredient(ingredientID);
     }
 
-    @PostMapping("/with")
-    public List<Recipe> fetchAllWithIngredients(@RequestBody List<Integer> ingredientID){
-        System.out.println("hello1");
-        return recipeService.fetchAllWithIngredients(ingredientID.toArray(new Integer[ingredientID.size()]));
+    @PostMapping("/ingredient")
+    public List<Recipe> fetchAllWithIngredients(@RequestBody List<Integer> ingredientIDs){
+        return recipeService.fetchAllWithIngredients(ingredientIDs);
     }
 
 }
