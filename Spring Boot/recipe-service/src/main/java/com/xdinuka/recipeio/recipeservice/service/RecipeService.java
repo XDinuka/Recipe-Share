@@ -1,5 +1,6 @@
 package com.xdinuka.recipeio.recipeservice.service;
 
+import com.xdinuka.recipeio.recipeservice.model.Ingredient;
 import com.xdinuka.recipeio.recipeservice.model.Recipe;
 
 import java.util.List;
@@ -13,4 +14,6 @@ public interface RecipeService {
 
     List<Recipe> fetchAllWithIngredient(Integer ingredientID);
     List<Recipe> fetchAllWithIngredients(List<Integer> ingredientID);
+
+    List<Ingredient> fetchIngredientDetails(Recipe recipe);
 }
