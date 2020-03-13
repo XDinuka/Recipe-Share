@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/recipe")
 public class RecipeController {
@@ -29,7 +30,6 @@ public class RecipeController {
         this.recipeService = recipeService;
         this.restTemplate = restTemplate;
     }
-
 
     @GetMapping
     List<Recipe> fetchAll() {

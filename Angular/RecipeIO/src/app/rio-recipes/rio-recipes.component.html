@@ -1,0 +1,13 @@
+<mat-card>
+  <mat-card-title>Recipes</mat-card-title>
+
+<mat-expansion-panel *ngFor="let recipe of recipes">
+  <mat-expansion-panel-header>
+    <mat-panel-title>{{recipe.name}}</mat-panel-title>
+<!--    <mat-panel-description>-->
+<!--      This is a summary of the content-->
+<!--    </mat-panel-description>-->
+  </mat-expansion-panel-header>
+  <app-rio-recipe [recipe]=recipe></app-rio-recipe>
+</mat-expansion-panel>
+</mat-card>

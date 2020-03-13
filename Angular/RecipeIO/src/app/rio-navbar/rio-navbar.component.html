@@ -1,22 +1,23 @@
-<div fxHide.lt-lg="true">
-<mat-toolbar color="primary">
-  <span>RecipeIO</span>
-  <span class="example-spacer"></span>
-    <a mat-raised-button routerLink=".">Browse Recipes</a>
-    <span class="spacer-1em"></span>
-    <a mat-raised-button routerLink=".">My Ingredients</a>
-    <span class="spacer-1em"></span>
-    <a mat-raised-button routerLink=".">My Recipes</a>
-</mat-toolbar>
-</div>
-<div fxHide.gt-md="true">
+<!--<div fxHide.lt-lg="true">-->
+<!--<mat-toolbar color="primary">-->
+<!--  <span>RecipeIO</span>-->
+<!--  <span class="example-spacer"></span>-->
+<!--    <a mat-raised-button routerLink="recipes">Browse Recipes</a>-->
+<!--    <span class="spacer-1em"></span>-->
+<!--    <a mat-raised-button routerLink=".">My Ingredients</a>-->
+<!--    <span class="spacer-1em"></span>-->
+<!--    <a mat-raised-button routerLink=".">My Recipes</a>-->
+<!--</mat-toolbar>-->
+<!--</div>-->
+<!--<div fxHide.gt-md="true">-->
   <mat-toolbar color="primary">
     <span>RecipeIO</span>
     <span class="example-spacer"></span>
 
     <mat-menu #appMenu="matMenu">
-      <button mat-menu-item>Settings</button>
-      <button mat-menu-item>Help</button>
+      <button mat-menu-item routerLink="recipes">Browse Recipes</button>
+      <button mat-menu-item routerLink=".">My Ingredients</button>
+      <button mat-menu-item routerLink=".">My Recipes</button>
     </mat-menu>
 
     <button mat-icon-button [matMenuTriggerFor]="appMenu">
@@ -26,7 +27,7 @@
   </mat-toolbar>
 
 <!--  <div *ngIf="!shouldRun">Please open on Stackblitz to see result</div>-->
-</div>
+<!--</div>-->
 
 
 
