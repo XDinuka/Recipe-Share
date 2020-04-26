@@ -1,0 +1,82 @@
+<app-rio-navbar pageTitle="Create Post">
+  <div class="main-body">
+
+
+    <mat-vertical-stepper linear="true" #stepper>
+      <mat-step  [stepControl]="selectRecipeGroup3">
+
+
+          <ng-template matStepLabel>Select recipe</ng-template>
+        <form [formGroup]="selectRecipeGroup1">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Search</mat-label>
+            <input matInput formControlName="name" #recipeNameInput (keyup)="searchRecipe(recipeNameInput.value)">
+          </mat-form-field>
+        </form>
+        <form [formGroup]="selectRecipeGroup2" (submit)="selectRecipe()">
+          <mat-radio-group formControlName="recipeId" aria-label="Select an option" (change)="selectRecipe()">
+            <mat-radio-button *ngFor="let recipe of recipeList" [value]="recipe.id">{{recipe.name}}</mat-radio-button>
+          </mat-radio-group>
+
+        </form>
+        <div *ngIf="post.recipe!=null">
+          <p>{{post.recipe.name}} recipe is selected.</p>
+        </div>
+        <form [formGroup]="selectRecipeGroup3">
+          <input formControlName="recipe" type="hidden">
+        </form>
+
+          <div>
+            <button mat-stroked-button matStepperNext>Next</button>
+          </div>
+
+      </mat-step>
+      <mat-step [stepControl]="enterPostGroup" (submit)="this.post.text= enterPostGroup.controls['postText'].value">
+        <ng-template matStepLabel>Enter post text</ng-template>
+        <form [formGroup]="enterPostGroup">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Write something</mat-label>
+            <textarea matInput required formControlName="postText"></textarea>
+          </mat-form-field>
+        </form>
+          <div>
+            <button mat-stroked-button matStepperPrevious style="margin-right: 1em;">Back</button>
+            <button mat-stroked-button matStepperNext>Next</button>
+          </div>
+
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Add an image</ng-template>
+        <form (submit)="imageSubmitted(imageInput.files[0])">
+          <input type="file" #imageInput accept="image/*" required>
+          <br>
+          <br>
+          <button mat-stroked-button type="button" matStepperPrevious style="margin-right: 1em;">Back</button>
+          <button mat-stroked-button type="submit">Next</button>
+        </form>
+
+
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Review your post</ng-template>
+<!--    <button (click)="pr()"></button>-->
+
+
+
+       <app-rio-post [post]="post" [showRecipe]="false" [showComment]="false"></app-rio-post>
+
+
+
+
+
+        <div>
+          <button mat-stroked-button matStepperPrevious style="margin-right: 1em;">Back</button>
+          <button mat-stroked-button (click)="doPost()">Post</button>
+        </div>
+      </mat-step>
+    </mat-vertical-stepper>
+
+
+
+  </div>
+</app-rio-navbar>

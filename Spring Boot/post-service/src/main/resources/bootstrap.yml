@@ -1,0 +1,13 @@
+server:
+  port: 5002
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+#    serviceUrl:
+#      defaultZone: http://rio-discovery/eureka
+#  instance:
+#    hostname: rio-discovery
+spring:
+  application:
+    name: post-service

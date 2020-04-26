@@ -1,0 +1,45 @@
+<div>
+  <mat-card>
+    <h1>RecipeIO</h1>
+    <mat-tab-group mat-align-tabs="center" animationDuration="10ms">
+      <mat-tab label="Sign In">
+        <form [formGroup]="signInFrom" (ngSubmit)="submitSignIn()">
+          <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="in-username">
+            <mat-error *ngIf="(!signInFrom.controls['in-username'].valid && signInFrom.controls['in-username'].touched)">Username is required.</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="in-password">
+            <mat-error *ngIf="(!signInFrom.controls['in-password'].valid && signInFrom.controls['in-password'].touched)" >{{getErrorMessage('in-password')}}</mat-error>
+          </mat-form-field>
+          <button mat-raised-button color="primary" type="submit" [disabled]="signInFrom.invalid">Submit</button>
+        </form>
+      </mat-tab>
+      <mat-tab label="Sign Up">
+        <form [formGroup]="signUpForm" (ngSubmit)="submitSignUp()">
+          <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="up-username">
+            <mat-error
+              *ngIf="(!signUpForm.controls['up-username'].valid && signUpForm.controls['up-username'].touched)">{{getErrorMessage('up-username')}}</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="up-password">
+            <mat-error
+              *ngIf="(!signUpForm.controls['up-password'].valid && signUpForm.controls['up-password'].touched)">{{getErrorMessage('up-password')}}</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput type="password" formControlName="up-password-c" [errorStateMatcher]="errorStateMatcher">
+            <mat-error
+              *ngIf="signUpForm.controls['up-password-c'].touched && (!signUpForm.controls['up-password-c'].valid || signUpForm.errors?.noMatch)">{{getErrorMessage('up-password-c')}}</mat-error>
+          </mat-form-field>
+          <button mat-raised-button color="primary" type="submit" [disabled]="signUpForm.invalid">Submit</button>
+        </form>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card>
+</div>

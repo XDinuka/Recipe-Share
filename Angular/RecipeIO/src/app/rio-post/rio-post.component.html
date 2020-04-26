@@ -1,0 +1,38 @@
+
+  <mat-card class="example-card mat-elevation-z2" style="margin-top: 2em;">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{(post.user)?post.user.username:''}}</mat-card-title>
+      <mat-card-subtitle>{{(post.recipe)?post.recipe.name:''}} recipe by {{(post.recipe)?post.recipe.user.username:''}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{(post.image)?post.image:''}}">
+    <mat-card-content>
+      <p>{{(post.text)?post.text:''}} </p>
+    </mat-card-content>
+    <mat-card-actions>
+
+        <button *ngIf="showRecipe" mat-stroked-button routerLink="/recipe/{{(post.recipe)?post.recipe.id:''}}" >Recipe</button>
+        <button  *ngIf="showComment" mat-stroked-button routerLink="/post/{{(post)?post.id:''}}">Comment</button>
+        <button  *ngIf="showDelete" mat-stroked-button (click)="sendDelete()" color="warn">Delete</button>
+
+    </mat-card-actions>
+  </mat-card>
+
+<!--  <mat-card class="example-card mat-elevation-z2" style="margin: 2em;">-->
+<!--    <mat-card-header>-->
+<!--      <div mat-card-avatar class="example-header-image"></div>-->
+<!--      <mat-card-title>{{(config.post.user)?config.post.user.username:''}}</mat-card-title>-->
+<!--      <mat-card-subtitle>{{(config.post.recipe)?config.post.recipe.name:''}} by {{(config.post.recipe)?config.post.recipe.user.username:''}}</mat-card-subtitle>-->
+<!--    </mat-card-header>-->
+<!--    <img mat-card-image src="{{(config.post.image)?config.post.image:''}}">-->
+<!--    <mat-card-content>-->
+<!--      <p>{{(config.post.text)?config.post.text:''}} </p>-->
+<!--    </mat-card-content>-->
+<!--    <mat-card-actions>-->
+<!--{{config.recipe}}-->
+<!--        <button *ngIf="config.recipe" mat-stroked-button routerLink="/recipe/{{(config.post.recipe)?config.post.recipe.id:''}}" >Recipe</button>-->
+<!--        <button  *ngIf="config.comment" mat-stroked-button routerLink="/post/'+{{(config.post)?config.post.id:''}}">Comment</button>-->
+
+<!--    </mat-card-actions>-->
+<!--  </mat-card>-->
+

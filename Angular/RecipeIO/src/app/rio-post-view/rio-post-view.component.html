@@ -1,0 +1,46 @@
+<app-rio-navbar pageTitle="{{(found)?post.recipe.name+' cooked by '+post.user.username:(loading)?'Post loading':'Post not found'}}">
+
+  <div class="main-body">
+
+    <div *ngIf="loading"
+         style="display: flex; flex-direction: column; justify-content: center;align-items: center;min-height: 80vh">
+      <h2>Please wait...</h2>
+      <mat-spinner></mat-spinner>
+    </div>
+
+    <div *ngIf="found; else notFound">
+
+      <app-rio-post [post]="post" [showComment]="false"></app-rio-post>
+
+      <form [formGroup]="commentGroup" (submit)="postComment()">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Write a comment</mat-label>
+          <textarea matInput required formControlName="commentText"></textarea>
+        </mat-form-field>
+        <button mat-stroked-button type="submit">Submit</button>
+      </form>
+
+      <div style="margin: 2em;display: flex;flex-direction: column;">
+        <app-rio-comment *ngFor="let comment of comments" [comment]="comment"></app-rio-comment>
+
+
+      </div>
+
+
+    </div>
+    <ng-template #notFound>
+      <p>The link you clicked maybe broken or expired.</p>
+    </ng-template>
+
+    <br>
+
+<!--    <button mat-stroked-button (click)="toCreatePost()">Create Post</button>-->
+
+  </div>
+</app-rio-navbar>
+
+
+<!--<mat-list>-->
+<!--  <mat-list-item *ngFor="let recipeIngredient of recipe.ingredients"> {{recipeIngredient.ingredientId}} - {{recipeIngredient.quantity}} </mat-list-item>-->
+<!--</mat-list>-->
+<!--<p *ngIf="recipe!=null">recipe{{recipe.name}}</p>-->

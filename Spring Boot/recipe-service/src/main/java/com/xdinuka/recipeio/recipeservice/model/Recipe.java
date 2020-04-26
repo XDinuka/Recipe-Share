@@ -1,11 +1,10 @@
 package com.xdinuka.recipeio.recipeservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Data
@@ -15,28 +14,42 @@ public class Recipe implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
+
     @Column(nullable = false)
     String name;
-    @OneToMany(mappedBy = "recipe",cascade = CascadeType.ALL)
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     List<Ingredient> ingredients;
+
+    @Lob
     String instructions;
-    Integer user;
 
-    public Recipe(){}
-    public Recipe(Integer id,String name,Boolean isVegan,Ingredient... ingredients){
-        setId(id);
-        setName(name);
-        setIngredients(Arrays.asList(ingredients));
-    }
-    public Recipe(Integer id,String name){
-        setId(id);
-        setName(name);
-    }
+    Boolean vegan;
 
-    public Recipe(Integer id,String name,Boolean isVegan,List<Ingredient> ingredients){
-        setId(id);
-        setName(name);
-        setIngredients(ingredients);
-    }
+    @JsonIgnore
+    Integer userID;
+
+    @Transient
+    User user;
+
+//    public Recipe() {
+//    }
+//
+//    public Recipe(Integer id, String name, Boolean isVegan, IngredientOld... ingredientOlds) {
+//        setId(id);
+//        setName(name);
+//        setIngredientOlds(Arrays.asList(ingredientOlds));
+//    }
+//
+//    public Recipe(Integer id, String name) {
+//        setId(id);
+//        setName(name);
+//    }
+//
+//    public Recipe(Integer id, String name, Boolean isVegan, List<IngredientOld> ingredientOlds) {
+//        setId(id);
+//        setName(name);
+//        setIngredientOlds(ingredientOlds);
+//    }
 
 }

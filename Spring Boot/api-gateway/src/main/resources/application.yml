@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/rio_user_db?createDatabaseIfNotExist=true
+#    url: jdbc:mysql://rio-user-db:3306/rio_user_db?createDatabaseIfNotExist=true
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+zuul:
+  routes:
+    recipeService:
+      path: /recipe/**
+      serviceId: recipe-service
+    postService:
+      path: /post/**
+      serviceId: post-service
+    commentService:
+      path: /comment/**
+      serviceId: comment-service
+  host:
+    socket-timeout-millis: 60000
+  ignored-headers:  Access-Control-Allow-Credentials, Access-Control-Allow-Origin
+  sensitiveHeaders: Cookie, Set-Cookie
+ribbon:
+  ReadTimeout: 60000
+

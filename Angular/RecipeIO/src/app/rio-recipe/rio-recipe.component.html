@@ -1,3 +1,58 @@
-<mat-list>
-  <mat-list-item *ngFor="let recipeIngredient of recipe.ingredients"> {{recipeIngredient.ingredientId}} - {{recipeIngredient.quantity}} </mat-list-item>
-</mat-list>
+<app-rio-navbar pageTitle="{{(found)?recipe.name+' recipe by '+recipe.user.username:(loading)?'Recipe loading':'Recipe not found'}}">
+
+  <div class="main-body">
+
+    <div *ngIf="loading"
+         style="display: flex; flex-direction: column; justify-content: center;align-items: center;min-height: 80vh">
+      <h2>Please wait...</h2>
+      <mat-spinner></mat-spinner>
+    </div>
+
+    <div *ngIf="found; else notFound">
+
+      <mat-chip-list>
+        <mat-chip *ngIf="recipe.vegan">vegan</mat-chip>
+        <mat-chip *ngIf="!recipe.vegan">not vegan</mat-chip>
+      </mat-chip-list>
+<br>
+
+      <table mat-table [dataSource]="ingredientDataSource" class="mat-elevation-z4">
+
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Ingredient</th>
+          <td mat-cell *matCellDef="let ingredient"> {{ingredient.name}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="quantity">
+          <th mat-header-cell *matHeaderCellDef> Quantity</th>
+          <td mat-cell *matCellDef="let ingredient"> {{ingredient.quantity}} </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <br>
+
+      <p>{{recipe.instructions}}</p>
+
+    </div>
+    <ng-template #notFound>
+      <p>The link you clicked maybe broken or expired.</p>
+    </ng-template>
+
+    <br>
+
+    <button mat-stroked-button (click)="toCreatePost()">Create Post</button>
+
+  </div>
+</app-rio-navbar>
+
+
+<!--<mat-list>-->
+<!--  <mat-list-item *ngFor="let recipeIngredient of recipe.ingredients"> {{recipeIngredient.ingredientId}} - {{recipeIngredient.quantity}} </mat-list-item>-->
+<!--</mat-list>-->
+<p *ngIf="recipe!=null">recipe{{recipe.name}}</p>

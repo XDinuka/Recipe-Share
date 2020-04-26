@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-card-title>{{recipe.name}}</mat-card-title>
+  <mat-card-subtitle>by {{recipe.user.username}}</mat-card-subtitle>
+  <mat-card-content>
+    <mat-chip-list>
+      <mat-chip *ngIf="recipe.vegan">vegan</mat-chip>
+      <mat-chip *ngIf="!recipe.vegan">not vegan</mat-chip>
+    </mat-chip-list>
+    <br>
+    <p>Uses {{recipe.ingredients.length}} ingredients including {{recipe.ingredients[0].name}}.</p>
+  </mat-card-content>
+  <mat-card-footer style="padding: 1em;display: flex; flex-direction: row-reverse;">
+    <button mat-stroked-button routerLink="/recipe/{{recipe.id}}">Open Recipe</button>
+  </mat-card-footer>
+</mat-card>

@@ -1,10 +1,17 @@
-.example-icon {
-  padding: 0 14px;
+.sidenav-container {
+  height: 100%;
 }
 
-.example-spacer {
-  flex: 1 1 auto;
+.sidenav {
+  width: 200px;
 }
-.spacer-1em{
-  width: 1em;
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }

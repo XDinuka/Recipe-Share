@@ -1,13 +1,30 @@
-<mat-card>
-  <mat-card-title>Recipes</mat-card-title>
+<app-rio-navbar pageTitle="Recipes">
+  <div class="main-body">
 
-<mat-expansion-panel *ngFor="let recipe of recipes">
-  <mat-expansion-panel-header>
-    <mat-panel-title>{{recipe.name}}</mat-panel-title>
-<!--    <mat-panel-description>-->
-<!--      This is a summary of the content-->
-<!--    </mat-panel-description>-->
-  </mat-expansion-panel-header>
-  <app-rio-recipe [recipe]=recipe></app-rio-recipe>
-</mat-expansion-panel>
-</mat-card>
+
+    <mat-card>
+      <mat-card-content>
+        <form [formGroup]="searchGroup" (submit)="getRecipes()">
+          <mat-form-field appearance="outline"  class="w-100">
+            <mat-label>Search</mat-label>
+            <input matInput formControlName="name" required>
+          </mat-form-field>
+
+          <div style="display: flex;justify-content: space-between;">
+            <mat-checkbox formControlName="vegan">Vegan Only</mat-checkbox>
+            <button mat-stroked-button type="submit">Search</button>
+          </div>
+
+        </form>
+
+      </mat-card-content>
+    </mat-card>
+
+    <div *ngFor="let recipe of recipes" style="margin-top:1em;">
+      <app-rio-recipe-card [recipe]="recipe"></app-rio-recipe-card>
+    </div>
+
+  </div>
+</app-rio-navbar>
+
+

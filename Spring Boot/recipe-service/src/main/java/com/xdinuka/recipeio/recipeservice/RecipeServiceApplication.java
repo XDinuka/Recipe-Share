@@ -13,13 +13,13 @@ import org.springframework.web.client.RestTemplate;
 @EnableCircuitBreaker
 public class RecipeServiceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(RecipeServiceApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(RecipeServiceApplication.class, args);
+    }
 
-	@Bean
-	@LoadBalanced
-	public static RestTemplate getRestTemplate(){
-		return new RestTemplate();
-	}
+    @Bean
+    @LoadBalanced
+    public static RestTemplate getRestTemplate() {
+        return new RestTemplate();
+    }
 }
